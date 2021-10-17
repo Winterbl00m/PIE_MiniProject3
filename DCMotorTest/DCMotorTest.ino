@@ -131,7 +131,7 @@ int findTape(){
     if (time_left == -1) {
       return -1;
     } else {
-      return -(time_left - time_right);
+      return -(time_left);
     }
   } else {
     return +time_right;
