@@ -1,7 +1,7 @@
 
 #include <Adafruit_MotorShield.h>
 
-const int Sensor1Pin = A0; 
+const int middleSensorPin = A0; 
 const int leftSensorPin = A1;
 const int rightSensorPin = A2;
 

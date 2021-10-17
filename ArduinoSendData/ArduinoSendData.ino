@@ -1,4 +1,11 @@
-const int Sensor1Pin = A0; // Sensor output voltage
+
+const int left = A2; // 880-940: use 920 as cutoff
+const int mid = A1; // 830-900: use 880 as cutoff
+const int right = A0; // 790-870: use 850 as cutoff
+
+const int cutoff_left = 920;
+const int cutoff_mid = 880;
+const int cutoff_right = 850;
 
 #include <Adafruit_MotorShield.h>
 
@@ -10,7 +17,9 @@ Adafruit_DCMotor *motor2 = AFMS.getMotor(2);
 void setup() 
 {
   Serial.begin(9600);
-  pinMode(Sensor1Pin, INPUT);
+  pinMode(left, INPUT);
+  pinMode(mid, INPUT);
+  pinMode(right, INPUT);
   Serial.println("Adafruit Motorshield v2 - DC Motor test!");
 
   if (!AFMS.begin()) {         // create with the default frequency 1.6KHz
@@ -30,7 +39,12 @@ void setup()
 void loop() 
 {
   // Read in the ADC and convert it to a voltage:
-  int proximityADC = analogRead(Sensor1Pin);
-  Serial.println(proximityADC);
-  delay(100);
+  Serial.print("left: ");
+  Serial.println(analogRead(left));
+  Serial.print("middle: ");
+  Serial.println(analogRead(mid));
+  Serial.print("right: ");
+  Serial.println(analogRead(right));
+  Serial.println("");
+  delay(1000);
 }
