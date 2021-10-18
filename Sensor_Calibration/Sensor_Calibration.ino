@@ -39,7 +39,7 @@ void setup()
 void loop() 
 {
   // Read in the ADC and convert it to a voltage:
-  Serial.print("left, mid, right");
+  Serial.println("left, mid, right");
   for (int i = 0; i <= 10; i++) {
     Serial.print(analogRead(left));
     Serial.print(",");
