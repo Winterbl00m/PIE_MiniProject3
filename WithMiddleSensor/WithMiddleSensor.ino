@@ -5,9 +5,9 @@ const int leftSensorPin = A2; // 880-940: use 910 as cutoff
 const int middleSensorPin = A1; // 830-900: use 870 as cutoff
 const int rightSensorPin = A0; // 790-870: use 840 as cutoff
 
-const int cutoff_left = 910;
-const int cutoff_mid = 870;
-const int cutoff_right = 840;
+const int cutoff_left = 920;
+const int cutoff_mid = 850;
+const int cutoff_right = 800;
 
 Adafruit_MotorShield AFMS = Adafruit_MotorShield();
 Adafruit_DCMotor *leftMotor = AFMS.getMotor(1);
@@ -44,32 +44,16 @@ void turn(bool leftDir){
   if (leftDir) {
     sensorPin = leftSensorPin;
   }
-
-//  if (leftDir) {
-//    leftMotor->setSpeed(0);
-//    rightMotor->setSpeed(default_speed);
-//  } else {
-//    leftMotor->setSpeed(default_speed-left_offset);
-//    rightMotor->setSpeed(0);
-//  }
-//
-//  leftMotor->run(FORWARD);
-//  rightMotor->run(FORWARD);
-  
-  while(checkSensor(leftSensorPin, cutoff_left) or !checkSensor(middleSensorPin, cutoff_right)) {
-//    delay(1);
-    
-    if (leftDir) {
-      leftMotor->setSpeed(0);
-      rightMotor->setSpeed(default_speed);
-    } else {
-      leftMotor->setSpeed(default_speed-left_offset);
-      rightMotor->setSpeed(0);
-    }
-  
-    leftMotor->run(FORWARD);
-    rightMotor->run(FORWARD);
+  if (leftDir) {
+    leftMotor->setSpeed(0);
+    rightMotor->setSpeed(default_speed);
+  } else {
+    leftMotor->setSpeed(default_speed-left_offset);
+    rightMotor->setSpeed(0);
   }
+
+  leftMotor->run(FORWARD);
+  rightMotor->run(FORWARD);
 }
 
 //void turn_slightly(bool leftDir){
